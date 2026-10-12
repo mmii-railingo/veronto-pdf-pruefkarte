@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="de" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Technischer Aufbau &#8212; PDF-Prüfkarte: Bedienung und Technik</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=f6a572b4" />
+    <script src="_static/documentation_options.js?v=8fdbe8ab"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/translations.js?v=9bf55d28"></script>
+    <link rel="canonical" href="https://mmii-railingo.github.io/veronto-pdf-pruefkarte/anleitung/technik.html" />
+    <link rel="index" title="Stichwortverzeichnis" href="genindex.html" />
+    <link rel="search" title="Suche" href="search.html" />
+    <link rel="next" title="Die Dokumentation pflegen" href="mitarbeiten.html" />
+    <link rel="prev" title="Die Karte verwenden" href="bedienung.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">PDF-Prüfkarte: Bedienung und Technik</a></h1>
+
+
+
+<p class="blurb">Freie Dokumentation für eine interaktive Arbeitshilfe</p>
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Los" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Dokumentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bedienung.html">Die Karte verwenden</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Technischer Aufbau</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#bedienelemente">Bedienelemente</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#zustand-und-ereignisse">Zustand und Ereignisse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#darstellung-und-druck">Darstellung und Druck</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dateiverarbeitung">Dateiverarbeitung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#die-dokumentation-bauen">Die Dokumentation bauen</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mitarbeiten.html">Die Dokumentation pflegen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rechtliches.html">Herausgeber und Nutzung</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="bedienung.html" title="vorheriges Kapitel">Die Karte verwenden</a></li>
+      <li>Next: <a href="mitarbeiten.html" title="nächstes Kapitel">Die Dokumentation pflegen</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="technischer-aufbau">
+<h1>Technischer Aufbau<a class="headerlink" href="#technischer-aufbau" title="Link to this heading">¶</a></h1>
+<p>Die Prüfkarte besteht aus einer statischen HTML-Datei. Darin stehen die
+Struktur, die CSS-Regeln und ein kleines JavaScript. Der öffentlich
+einsehbare Stand liegt im <a class="reference external" href="https://github.com/mmii-railingo/veronto-pdf-pruefkarte">Repository der Prüfkarte</a>. Dieses
+Dokumentationsprojekt enthält eigene Texte und Builddateien; der Code
+der Prüfkarte wird hier nicht mitgeliefert.</p>
+<section id="bedienelemente">
+<h2>Bedienelemente<a class="headerlink" href="#bedienelemente" title="Link to this heading">¶</a></h2>
+<p>Die neun Schritte verwenden native Checkboxen. Jede Checkbox steht in einem
+<code class="docutils literal notranslate"><span class="pre">label</span></code> zusammen mit ihrer Beschriftung. Die drei Gruppen besitzen
+Überschriften, die über <code class="docutils literal notranslate"><span class="pre">aria-labelledby</span></code> zugeordnet sind. Der
+Fortschritt verwendet <code class="docutils literal notranslate"><span class="pre">role=&quot;status&quot;</span></code> und <code class="docutils literal notranslate"><span class="pre">aria-live=&quot;polite&quot;</span></code>.
+Diese Eigenschaften unterstützen die Bedienung mit Tastatur und
+Sprachausgabe. Prüfe konkrete Browser und Hilfsmittel bei einer Änderung
+weiterhin selbst.</p>
+</section>
+<section id="zustand-und-ereignisse">
+<h2>Zustand und Ereignisse<a class="headerlink" href="#zustand-und-ereignisse" title="Link to this heading">¶</a></h2>
+<p>Beim Laden sammelt das Skript die Checkboxen in einer Liste. Auf jedes
+<code class="docutils literal notranslate"><span class="pre">change</span></code>-Ereignis zählt es die aktuell gesetzten Häkchen und aktualisiert
+den sichtbaren Fortschritt. Der Druckknopf ruft <code class="docutils literal notranslate"><span class="pre">window.print()</span></code> auf.
+Das Skript verwendet weder <code class="docutils literal notranslate"><span class="pre">localStorage</span></code> noch <code class="docutils literal notranslate"><span class="pre">sessionStorage</span></code> und
+sendet keine Prüfergebnisse an einen eigenen Endpunkt.</p>
+<p>Ein Browser kann Formularzustände bei einer Navigation wiederherstellen.
+Die Karte synchronisiert den Zähler im betrachteten Stand ausschließlich
+bei einer Änderung eines Kästchens. Wenn Browser und Fortschrittsanzeige
+nach einer Wiederherstellung abweichen, prüfe die Häkchen erneut und löse
+eine Änderung aus. Verlasse dich bei längeren Vorgängen auf deinen gesicherten
+Prüfvermerk.</p>
+</section>
+<section id="darstellung-und-druck">
+<h2>Darstellung und Druck<a class="headerlink" href="#darstellung-und-druck" title="Link to this heading">¶</a></h2>
+<p>Die Seite nutzt Systemschriften und CSS für schmale Bildschirme. Unter
+540 Pixeln Breite verändert sich unter anderem die Anordnung des
+Fortschrittsbereichs. Die Druckregeln entfernen den Druckknopf, setzen
+einen weißen Hintergrund und versuchen, die einzelnen Gruppen auf einer
+Seite zusammenzuhalten. Die tatsächliche Seitenaufteilung hängt vom
+Druckdialog, Papierformat und Browser ab.</p>
+</section>
+<section id="dateiverarbeitung">
+<h2>Dateiverarbeitung<a class="headerlink" href="#dateiverarbeitung" title="Link to this heading">¶</a></h2>
+<p>Die Prüfkarte besitzt keinen Datei-Upload und keinen PDF-Parser. Sie liest
+keine Dokumente ein und untersucht keine Textschichten oder Metadaten.
+Du öffnest deine PDF-Datei in einem geeigneten Programm. Der Aufruf einer
+gehosteten Seite bleibt ein gewöhnlicher Abruf bei ihrem Hostinganbieter;
+die Aussage über das Skript beschreibt keine allgemeine Eigenschaft des
+Browsers, des Druckdienstes oder verlinkter Werkzeuge.</p>
+</section>
+<section id="die-dokumentation-bauen">
+<h2>Die Dokumentation bauen<a class="headerlink" href="#die-dokumentation-bauen" title="Link to this heading">¶</a></h2>
+<p>Diese Dokumentation verwendet Sphinx und reStructuredText. Für einen
+lokalen Build brauchst du Python ab Version 3.11. Im vorgesehenen
+Read-the-Docs-Build wird Python 3.12 eingesetzt.</p>
+<p>Führe im Stammordner dieses Dokumentationsprojekts aus:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 -m venv .venv</span>
+<span class="go">.venv/bin/python -m pip install -r requirements.txt</span>
+<span class="go">.venv/bin/python -m sphinx -b html -W --keep-going docs _build/html</span>
+</pre></div>
+</div>
+<p>Öffne danach <code class="docutils literal notranslate"><span class="pre">_build/html/index.html</span></code>. Der Build schlägt bei Warnungen
+fehl, damit beispielsweise ungültige interne Verweise auffallen. Externe
+Zielseiten müssen zusätzlich geprüft werden. Die Datei
+<code class="docutils literal notranslate"><span class="pre">.readthedocs.yaml</span></code> legt Buildsystem, Pythonversion und Anforderungen
+für einen öffentlichen Read-the-Docs-Build fest. Eine Veröffentlichung
+benötigt zusätzlich ein dort angelegtes Projekt.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2026, veronto GmbH & Co. KG.
+      
+      |
+      <a href="_sources/technik.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
